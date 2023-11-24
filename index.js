@@ -28,3 +28,77 @@ const posts = [
     }
 ]
 
+const postsEl = document.getElementById("posts");
+
+let postsHTML = "";
+
+for (let i = 0; i < posts.length; i++) {
+    const { name, username, location, avatar, post, comment, likes } = posts[i];
+
+    if (i > 0 && i < posts.length) {
+        postsHTML += `<div class="space"></div>`;
+    }
+
+    postsHTML += `
+    <article class="user">
+
+        <div class="user__header">
+            <div class="avatar">
+                <img 
+                    src="./${avatar}" 
+                    alt="an image of the account owner">
+            </div>
+            <div class="user__details">
+                <p class="user__name">
+                    ${name}
+                </p>
+                <p class="user__location">
+                    ${location}
+                </p>
+            </div>
+        </div>
+
+        <div class="user__post-img">
+            <img 
+                src="./${post}" 
+                alt="an image of the account owner">
+        </div>
+
+        <div class="user__icons">
+            <div class="icon">
+                <img 
+                    src="./images/icon-heart.png" 
+                    alt="an image of the account owner"
+                    class="icon__main">
+            </div>
+            <div class="icon">
+                <img 
+                    src="./images/icon-comment.png" 
+                    alt="an image of the account owner"
+                    class="icon__main">
+            </div>
+            <div class="icon">
+                <img 
+                    src="./images/icon-dm.png" 
+                    alt="an image of the account owner"
+                    class="icon__main">
+            </div>
+        </div>
+
+        <div class="user__likes">
+            <p>
+                ${likes} likes
+            </p>
+        </div>
+
+        <div class="user__caption">
+            <p>
+                ${username} <span>${comment}</span>
+            </p>
+        </div>
+
+    </article>
+    `;
+}
+
+postsEl.innerHTML = postsHTML;
